@@ -33,7 +33,7 @@ const JobsList = () => {
   const [selectedExperience, setSelectedExperience] = useState(""); // State to hold selected experience
   const [selectedLocations, setSelectedLocations] = useState([]);
   const [selectedSalary, setSelectedSalary] = useState(""); // State to hold selected salary
-  const pageRef = useRef(30);
+  const pageRef = useRef(0);
   useEffect(() => {
     fetchJobDetails();
   }, []);
