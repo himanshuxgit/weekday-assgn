@@ -1,8 +1,37 @@
-# React + Vite
+# Candidate Application Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a project that serves as a Candidate Application Platform with infinite scrolling. It is currently deployed at [https://weekday-assgn.netlify.app](https://weekday-assgn.netlify.app).
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To run the application locally, follow these steps:
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/your-username/weekday-assgn.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd weekday-assgn
+    ```
+
+3. Install the dependencies:
+
+    ```bash
+    npm install
+    ```
+
+4. Start the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+5. Open your browser and visit [http://localhost:5173](http://localhost:5173) to view the application.
+
+## Additional Information
+
+- If you encounter any issues or have any questions, please [open an issue](https://github.com/himanshuxgit/weekday-assgn/issues).
