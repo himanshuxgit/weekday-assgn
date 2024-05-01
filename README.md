@@ -9,7 +9,7 @@ To run the application locally, follow these steps:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/weekday-assgn.git
+    git clone https://github.com/himanshuxgit/weekday-assgn.git
     ```
 
 2. Navigate to the project directory:
