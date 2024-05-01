@@ -256,18 +256,24 @@ const JobsList = () => {
                 Experience: {job.minExp != null ? job.minExp : "N/A"} -{" "}
                 {job.maxExp != null ? job.maxExp : "N/A"} years
               </Typography>
-              <Button
-
-                className="w-full h-12"
-                variant="contained"
-                color="success"
-                href={job.jdLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                startIcon={<ElectricBoltIcon />}
-              >
-                Easy Apply
-              </Button>
+                <Button
+                    style={{
+                        borderRadius: 35,
+                        backgroundColor: "#58ecc4",
+                        padding: "18px 36px",
+                        fontSize: "18px",
+                        color: "black", // Adding this line to set text color to black
+                    }}
+                    className="w-full h-12"
+                    variant="contained"
+                    color="success"
+                    href={job.jdLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    startIcon={<div style={{color:"#c8c419"}}><ElectricBoltIcon /></div>}
+                >
+                    Easy Apply
+                </Button>
             </CardContent>
           </Card>
         ))}
