@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Card, CardContent, CircularProgress, Typography } from "@mui/material";
-
 const JobsList = () => {
   const [jobDetails, setJobDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const pageRef = useRef(0);
+  const pageRef = useRef(17);
+
   useEffect(() => {
     fetchJobDetails();
   }, []);
@@ -15,10 +15,8 @@ const JobsList = () => {
     try {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-
       const limit = 10; // Number of results per page
       const offset = pageRef.current * limit; // Calculate offset for pagination
-
       const raw = JSON.stringify({
         limit: limit,
         offset: offset,
@@ -58,12 +56,10 @@ const JobsList = () => {
       fetchJobDetails();
     }
   };
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-8">
@@ -80,7 +76,14 @@ const JobsList = () => {
                 {job.jobDetailsFromCompany}
               </Typography>
               <Typography color="textSecondary" gutterBottom>
-                Salary: {job.minJdSalary} - {job.maxJdSalary}{" "}
+                Salary:{" "}
+                {job.minJdSalary != null
+                  ? parseFloat(job.minJdSalary).toFixed(2)
+                  : "N/A"}{" "}
+                -{" "}
+                {job.maxJdSalary != null
+                  ? parseFloat(job.maxJdSalary).toFixed(2)
+                  : "N/A"}{" "}
                 {job.salaryCurrencyCode}
               </Typography>
               <Typography color="textSecondary">
@@ -99,5 +102,4 @@ const JobsList = () => {
     </>
   );
 };
-
 export default JobsList;
