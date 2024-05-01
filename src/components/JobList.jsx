@@ -13,6 +13,8 @@ import {
   MenuItem,
 } from "@mui/material";
 import ElectricBoltIcon from "@mui/icons-material/ElectricBolt";
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+
 const RolesArray = [
   "Frontend",
   "Backend",
@@ -23,9 +25,7 @@ const RolesArray = [
   "Data Engineer",
   "Data Science",
 ];
-
 const LocationsArray = ["Remote", "Hybrid", "In-office"];
-
 const JobsList = () => {
   const [jobDetails, setJobDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +34,6 @@ const JobsList = () => {
   const [selectedExperience, setSelectedExperience] = useState(""); // State to hold selected experience
   const [selectedLocations, setSelectedLocations] = useState([]);
   const pageRef = useRef(30);
-
   useEffect(() => {
     fetchJobDetails();
   }, []);
@@ -95,12 +94,10 @@ const JobsList = () => {
   const handleExperienceFilterChange = (event) => {
     setSelectedExperience(event.target.value);
   };
-
   const handleLocationFilterChange = (event, newValue) => {
     setSelectedLocations(newValue);
     console.log(newValue);
   };
-
   const filteredJobDetailsByRoles =
     selectedJobRoles.length > 0
       ? jobDetails.filter((job) =>
@@ -109,14 +106,12 @@ const JobsList = () => {
           )
         )
       : jobDetails;
-
   const filteredJobDetailsByExperience =
     selectedExperience !== ""
       ? filteredJobDetailsByRoles.filter(
           (job) => job.minExp !== null && job.minExp >= selectedExperience
         )
       : filteredJobDetailsByRoles;
-
   let filteredJobDetails =
     selectedLocations.length > 0
       ? filteredJobDetailsByExperience.filter((job) =>
@@ -125,7 +120,6 @@ const JobsList = () => {
           )
         )
       : filteredJobDetailsByExperience;
-
   // If "in-office" is selected, append entries where location is neither "remote" nor "hybrid"
   if (selectedLocations.includes("In-office")) {
     filteredJobDetails = [
@@ -135,7 +129,6 @@ const JobsList = () => {
       ),
     ];
   }
-
   return (
     <>
       <div
@@ -156,7 +149,6 @@ const JobsList = () => {
           renderInput={(params) => <TextField {...params} label="Job Roles" />}
         />
       </div>
-
       <div className="ml-2 mb-6 inline-block w-48">
         <FormControl fullWidth>
           <InputLabel>Select Experience</InputLabel>
@@ -176,7 +168,6 @@ const JobsList = () => {
           </Select>
         </FormControl>
       </div>
-
       <div
         className="ml-2 mb-6 inline-block"
         style={{
@@ -197,15 +188,17 @@ const JobsList = () => {
           )}
         />
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-8">
         {/* Render filtered job details */}
         {filteredJobDetails.map((job, index) => (
           <Card key={index} className="w-11/12">
-            <CardContent className="bg-emerald-100">
-              <Typography variant="h5" component="div">
-                {job.jobRole}
-              </Typography>
+            <CardContent className="">
+              <div className="flex gap-x-2">
+                <AcUnitIcon className="mt-[1px]" />
+                <Typography variant="h5" component="div">
+                  {job.jobRole}
+                </Typography>
+              </div>
               <Typography color="textSecondary" gutterBottom>
                 {job.location}
               </Typography>
